@@ -5,12 +5,27 @@ import webbrowser
 from datetime import datetime
 
 engine = pyttsx3.init()
-r  = sr.Recognizer()
+recognizer  = sr.Recognizer()
+micro = sr.Microphone()
 login = os.getlogin()
 today = datetime.now().time()
 
 engine.say("Bonjour " + str(login) + ". Il est " + today.strftime("%H heures : %M minutes") +" que puis-je pour toi")
 engine.runAndWait()
+while True:
+    with micro as source:
+        print("Listening ...")
+        audio = recognizer.listen(source,5,5)
+        try:
+            text = recognizer.recognize_google(audio, language="fr-FR")
+            print(text)
+        except sr.UnknownValueError:
+            engine.say("Désolé, je n'ai pas compris")
+            engine.runAndWait()
+
+
+# engine.say("Bonjour " + str(login) + ". Il est " + today.strftime("%H heures : %M minutes") +" que puis-je pour toi")
+# engine.runAndWait()
 # with sr.Microphone() as source:
 #     print("Dites quelque chose")
 #     audio = r.listen(source)
