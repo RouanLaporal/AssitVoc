@@ -1,6 +1,6 @@
 # Assitant Vocale
 
-Développement de mon assistant personalisé en python 
+Développement de mon assistant vocal en python 
 
 
 ## Requirements
