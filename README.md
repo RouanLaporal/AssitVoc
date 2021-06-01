@@ -8,3 +8,7 @@ Développement de mon assistant vocal en python
 pip install SpeechRecognition
 ```
 
+```bash
+pip install pyttsx3
+```
+
